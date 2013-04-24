@@ -1,0 +1,80 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Dialog Test</title>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="js/jquery.js" ></script>
+		<script type="text/javascript" src="js/dialog.js" ></script>
+		<style>
+		.Bsz-dialog{position:absolute;overflow:hidden;}
+		.Bsz-dialog .bg{border-radius:5px;background:#436A8E;filter:alpha(opacity=40);opacity:0.4;overflow:hidden;}
+		.Bsz-dialog .co{position:absolute;z-index:2;left:10px;top:10px;border:1px #9D9D9D solid;border-radius:5px;overflow:hidden;background:#fff;}
+		.Bsz-dialog .co .hd{height:20px;overflow:hidden;border-bottom:1px #9D9D9D solid;padding:3px 10px 6px 10px;clear:both;background:url(/images/Bsz-dialog-bg-hd.png) repeat-x;}
+		.Bsz-dialog .co .hd span.title{float:left;display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+		.Bsz-dialog .co .hd a{float:right;}
+		.Bsz-dialog .co .bd{position:absolute;left:0;top:30px;bottom:0;right:0;overflow:hidden;}
+		.Bsz-dialog .co .bd .bd-main{padding:10px;*word-break:break-all;word-wrap:break-word;line-height:160%;}
+		.Bsz-dialog .co .bd .bd-main hr{margin:5px 0;}
+		.Bsz-dialog .co .bd .bd-mask{position:absolute;left:0;top:0;bottom:0;right:0;background:#000;*filter:alpha(opacity=40);opacity:0.4;width:100%;height:100%;}
+		.Bsz-dialog .co .ft{bottom:0;left:0;position:absolute;height:20px;clear:both;padding:3px 10px 7px 10px;overflow:hidden;text-align:right;}
+		.Bsz-dialog .co .ft a{text-decoration:none;color:#fff;display:inline-block;overflow:hidden;padding:3px 8px;border-radius:5px;background:#999999;margin-left:10px;}
+		.Bsz-dialog .co .ft a:hover{background:#66AACC;}	
+		</style>
+	</head>
+	<body>
+		<a id="J-test" href="javascript:void(0);"> create new dialog </a><br /> 
+		<a id="J-test1" href="javascript:void(0);"> create new dialog with Mask </a><br /> 
+		<a id="J-test-alert" href="javascript:void(0);"> create new alert </a><br />
+		<a id="J-test-confirm" href="javascript:void(0);"> create new confirm </a><br />
+	<script type="text/javascript">
+	$('#J-test').click(function() {
+		return Bsz.util.dialog.create({
+			width : 200,
+			height : 120,
+			content : 'hello',
+			title : 'yes',
+			removeEverytime : true,
+			onshow : function() {
+				alert('出来啦');
+			},
+			onhide : function() {
+				alert('关闭啦');
+			}
+		});
+	});
+	$('#J-test1').click(function() {
+		return Bsz.util.dialog.create({
+			width : 200,
+			height : 120,
+			content : 'hello',
+			title : 'yes-2',
+			removeEverytime : true,
+			hasMask : true
+		});
+	});
+	$('#J-test-alert').click(function() {
+		return Bsz.util.alert({
+			content : '这是警告',
+			buttons : [
+				function() {
+					alert('0')
+				}
+			]
+		});
+	});
+	$('#J-test-confirm').click(function() {
+		return Bsz.util.confirm({
+			content : '这是提醒',
+			buttons : [
+				function() {
+					alert('1')
+				},
+				function() {
+					alert('2')
+				}
+			]
+		});
+	});
+	</script>	
+	</body>
+</html>
